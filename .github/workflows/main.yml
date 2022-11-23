@@ -19,7 +19,7 @@ jobs:
       fail-fast: false
       matrix:
         build_type: [ Release ]
-        cmake: [ 3.9.2, latest ]
+        cmake: [ v3.9.2, latest ]
         compiler: [ gcc-9, gcc-10, gcc-11, gcc-12, clang-9, clang-10, clang-11, clang-12, clang-13, clang-14, clang-15 ]
 
     steps:
@@ -35,9 +35,7 @@ jobs:
           submodules: recursive
 
       - name: Get specific version CMake
-        uses: lukka/get-cmake@latest
-        with:
-          cmakeVersion: ${{ matrix.cmake }}
+        uses: lukka/get-cmake@${{ matrix.cmake }}
 
       - name: Install compiler
         id: install_cc
